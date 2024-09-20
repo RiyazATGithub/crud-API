@@ -27,11 +27,4 @@ const getTask = async (req, res) => {
   }
 };
 
-const updateTodo = async (req, res) => {
-  const { Taskname, Taskinfo, completed, inProcess, isDeleted } = req.body;
-  try {
-    const update = await Task.findByIDAndUpdate({ id });
-  } catch (err) {}
-};
-
 module.exports = { addTask, getTask };
