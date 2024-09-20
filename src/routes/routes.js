@@ -25,7 +25,7 @@ router.delete("/delete/:id", tokenVerify, Delete);
 
 router.post("/addTask", tokenVerify, addTask);
 
-router.get("/getTask", tokenVerify, getTask);
+router.get("/getTask/:id", getTask);
 
 router.post("/addsubtask/:id", addSub);
 

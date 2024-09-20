@@ -17,10 +17,9 @@ const addTask = async (req, res) => {
 };
 
 const getTask = async (req, res) => {
+  const { id } = req.params;
   try {
-    const get = await Task.findOne({ userId: req.user.id });
-    console.log(get);
-
+    const get = await Task.findOne({ _id: id });
     res.status(200).json({ task: get });
   } catch (err) {
     console.log(err);
