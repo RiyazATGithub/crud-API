@@ -1,55 +1,52 @@
 const mongoose = require("mongoose");
-const Task = new mongoose.Schema({
-  Taskname: {
-    type: String,
-    required: true,
-  },
+const user = require("../models/users");
 
-  Taskinfo: {
-    type: String,
-  },
-
-  status: {
-    type: Boolean,
-  },
-  createdAt: {
-    type: Date,
-  },
-  completedAt: {
-    type: Date,
-  },
-  subTask: {
-    type: schema.types.ObjectId,
-    ref: subTask,
-  },
-});
-
-const subTask = new mongoose.Schema(
+const subTaskSchema = new mongoose.Schema(
   {
-    subtaskName: {
+    parentId: {
+      type: mongoose.Schema.ObjectId,
+    },
+    Taskname: {
       type: String,
-      required: true,
+      require: true,
     },
-    subTaskInfo: {
-      type: string,
+    Taskinfo: {
+      type: String,
     },
-    inProcess: {
+    inprocess: {
       type: Boolean,
-      default: false,
-    },
-    isCompleted: {
-      type: Boolean,
-      default: false,
-    },
-    createdAt: {
-      type: Date,
     },
     completedAt: {
       type: Date,
+      default: null,
     },
-    createdBy: { type: schema.types.ObjectId, ref: Task },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
+
+const taskSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.ObjectId,
+      ref: user,
+    },
+
+    Taskname: {
+      type: String,
+      required: true,
+    },
+
+    Taskinfo: {
+      type: String,
+    },
+
+    inStatus: {
+      type: Boolean,
+    },
+  },
+  { timestamps: true }
+);
+
+const Task = mongoose.model("task", taskSchema);
+const subTask = mongoose.model("subtask", subTaskSchema);
+module.exports = { Task, subTask };

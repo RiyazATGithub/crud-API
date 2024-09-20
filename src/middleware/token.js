@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const user = require("../models/users");
+const { Login } = require("../controllers/users");
 
 const tokenVerify = (req, res, next) => {
   const authHead = req.headers["authorization"];
@@ -12,6 +13,8 @@ const tokenVerify = (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
     if (err) return res.status(500).json({ message: "invalid token" });
     req.user = await user.findOne({ _id: decoded.id });
+    // console.log(req.user._id);
+
     next();
   });
 };

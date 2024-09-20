@@ -1,9 +1,6 @@
-const express = require("express");
-const app = express();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const user = require("../models/users.js");
-// app.use(express.json())
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
