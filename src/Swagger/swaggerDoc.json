@@ -1,11 +1,11 @@
 {
-"securityDefinitions": {
-  "api_key": {
-    "type": "apiKey",
-    "in": "header",
-    "name": "Authorization"
-  }
-},
+  "securityDefinitions": {
+    "api_key": {
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
   "swagger": "2.0",
   "info": {
     "title": "REST API",
@@ -14,9 +14,7 @@
   },
   "host": "localhost:4000",
   "basePath": "/",
-  "schemes": [
-    "http"
-  ],
+  "schemes": ["http"],
   "paths": {
     "/api/users/register": {
       "post": {
@@ -93,12 +91,7 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },{
-            "name": "authorization",
-            "in": "header",
-            "type": "string"
           }
-        
         ],
         "responses": {
           "200": {
@@ -114,7 +107,6 @@
         "security": [
           {
             "api_key": []
-            
           }
         ]
       }
@@ -185,18 +177,6 @@
             "name": "authorization",
             "in": "header",
             "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "email": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
         "responses": {
